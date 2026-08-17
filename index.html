@@ -211,6 +211,27 @@
   .table-scroll td, .table-scroll th{
     white-space:nowrap;
   }
+
+  .tense-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:10px 0 4px 0;
+  }
+  .tense-tab{
+    background:var(--accent-light);
+    color:var(--accent);
+    border:1px solid transparent;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:0.82rem;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .tense-tab.active{
+    background:var(--accent);
+    color:#fff;
+  }
   table.gtable th, table.gtable td{
     border:1px solid var(--line);
     padding:5px 7px;
@@ -1025,42 +1046,36 @@
     <h3><span class="fr-title">Verbes fréquents et irréguliers</span> <span class="level-tag">A2/B1</span></h3>
     <div class="en-sub">Quick-reference forms for high-frequency irregular verbs</div>
 
-    <h4 style="margin:14px 0 4px 0; font-size:0.92rem; color:var(--accent);">Full present-tense conjugation — 20 most frequent irregular verbs</h4>
+    <h4 style="margin:14px 0 4px 0; font-size:0.92rem; color:var(--accent);">Full conjugation — 20 most frequent irregular verbs</h4>
     <div class="rule">
-      <span class="en">Every person, spelled out in full — the forms you'll draw on most in speech and writing.</span>
+      <span class="en">Every person, spelled out in full. Switch tenses with the buttons below — the table updates in place.</span>
+    </div>
+    <div class="tense-tabs" id="tenseTabs">
+      <button type="button" class="tense-tab active" data-tense="present">Présent</button>
+      <button type="button" class="tense-tab" data-tense="pc">Passé composé</button>
+      <button type="button" class="tense-tab" data-tense="imparfait">Imparfait</button>
+      <button type="button" class="tense-tab" data-tense="futur">Futur</button>
+      <button type="button" class="tense-tab" data-tense="conditionnel">Conditionnel</button>
+      <button type="button" class="tense-tab" data-tense="subjonctif">Subjonctif*</button>
     </div>
     <div class="table-scroll">
-    <table class="gtable">
-      <tr><th>Verb</th><th>je</th><th>tu</th><th>il/elle</th><th>nous</th><th>vous</th><th>ils/elles</th></tr>
-      <tr><td class="fr">être</td><td class="fr">suis</td><td class="fr">es</td><td class="fr">est</td><td class="fr">sommes</td><td class="fr">êtes</td><td class="fr">sont</td></tr>
-      <tr><td class="fr">avoir</td><td class="fr">ai</td><td class="fr">as</td><td class="fr">a</td><td class="fr">avons</td><td class="fr">avez</td><td class="fr">ont</td></tr>
-      <tr><td class="fr">aller</td><td class="fr">vais</td><td class="fr">vas</td><td class="fr">va</td><td class="fr">allons</td><td class="fr">allez</td><td class="fr">vont</td></tr>
-      <tr><td class="fr">faire</td><td class="fr">fais</td><td class="fr">fais</td><td class="fr">fait</td><td class="fr">faisons</td><td class="fr">faites</td><td class="fr">font</td></tr>
-      <tr><td class="fr">dire</td><td class="fr">dis</td><td class="fr">dis</td><td class="fr">dit</td><td class="fr">disons</td><td class="fr">dites</td><td class="fr">disent</td></tr>
-      <tr><td class="fr">voir</td><td class="fr">vois</td><td class="fr">vois</td><td class="fr">voit</td><td class="fr">voyons</td><td class="fr">voyez</td><td class="fr">voient</td></tr>
-      <tr><td class="fr">savoir</td><td class="fr">sais</td><td class="fr">sais</td><td class="fr">sait</td><td class="fr">savons</td><td class="fr">savez</td><td class="fr">savent</td></tr>
-      <tr><td class="fr">pouvoir</td><td class="fr">peux</td><td class="fr">peux</td><td class="fr">peut</td><td class="fr">pouvons</td><td class="fr">pouvez</td><td class="fr">peuvent</td></tr>
-      <tr><td class="fr">vouloir</td><td class="fr">veux</td><td class="fr">veux</td><td class="fr">veut</td><td class="fr">voulons</td><td class="fr">voulez</td><td class="fr">veulent</td></tr>
-      <tr><td class="fr">devoir</td><td class="fr">dois</td><td class="fr">dois</td><td class="fr">doit</td><td class="fr">devons</td><td class="fr">devez</td><td class="fr">doivent</td></tr>
-      <tr><td class="fr">venir</td><td class="fr">viens</td><td class="fr">viens</td><td class="fr">vient</td><td class="fr">venons</td><td class="fr">venez</td><td class="fr">viennent</td></tr>
-      <tr><td class="fr">tenir</td><td class="fr">tiens</td><td class="fr">tiens</td><td class="fr">tient</td><td class="fr">tenons</td><td class="fr">tenez</td><td class="fr">tiennent</td></tr>
-      <tr><td class="fr">prendre</td><td class="fr">prends</td><td class="fr">prends</td><td class="fr">prend</td><td class="fr">prenons</td><td class="fr">prenez</td><td class="fr">prennent</td></tr>
-      <tr><td class="fr">mettre</td><td class="fr">mets</td><td class="fr">mets</td><td class="fr">met</td><td class="fr">mettons</td><td class="fr">mettez</td><td class="fr">mettent</td></tr>
-      <tr><td class="fr">sortir</td><td class="fr">sors</td><td class="fr">sors</td><td class="fr">sort</td><td class="fr">sortons</td><td class="fr">sortez</td><td class="fr">sortent</td></tr>
-      <tr><td class="fr">partir</td><td class="fr">pars</td><td class="fr">pars</td><td class="fr">part</td><td class="fr">partons</td><td class="fr">partez</td><td class="fr">partent</td></tr>
-      <tr><td class="fr">connaître</td><td class="fr">connais</td><td class="fr">connais</td><td class="fr">connaît</td><td class="fr">connaissons</td><td class="fr">connaissez</td><td class="fr">connaissent</td></tr>
-      <tr><td class="fr">croire</td><td class="fr">crois</td><td class="fr">crois</td><td class="fr">croit</td><td class="fr">croyons</td><td class="fr">croyez</td><td class="fr">croient</td></tr>
-      <tr><td class="fr">boire</td><td class="fr">bois</td><td class="fr">bois</td><td class="fr">boit</td><td class="fr">buvons</td><td class="fr">buvez</td><td class="fr">boivent</td></tr>
-      <tr><td class="fr">écrire</td><td class="fr">écris</td><td class="fr">écris</td><td class="fr">écrit</td><td class="fr">écrivons</td><td class="fr">écrivez</td><td class="fr">écrivent</td></tr>
-      <tr><td class="fr">lire</td><td class="fr">lis</td><td class="fr">lis</td><td class="fr">lit</td><td class="fr">lisons</td><td class="fr">lisez</td><td class="fr">lisent</td></tr>
+    <table class="gtable" id="conjTable">
+      <thead>
+        <tr><th>Verb</th><th>je</th><th>tu</th><th>il/elle</th><th>nous</th><th>vous</th><th>ils/elles</th></tr>
+      </thead>
+      <tbody id="conjTableBody"></tbody>
     </table>
+    </div>
+    <div class="note" id="subjNote" style="display:none;">
+      <span class="fr">*Le subjonctif s'utilise toujours après "que" : que je sois, que tu aies…</span>
+      <span class="en">*The subjunctive is always introduced by "que" in real use (que je sois, que tu aies…) — the table shows the bare forms for compactness.</span>
     </div>
     <div class="note">
       <span class="fr">Attention aux verbes à "double radical" : boire (buvons/buvez, mais boivent) et prendre (prenons/prenez, mais prennent) changent de radical à la 3e pers. du pluriel.</span>
-      <span class="en">Watch for "stem-changing" verbs: boire and prendre (and their families — apprendre, comprendre, surprendre) use one stem for nous/vous and a different one for ils/elles.</span>
+      <span class="en">Watch for "stem-changing" verbs: boire and prendre (and their families — apprendre, comprendre, surprendre) use one stem for nous/vous and a different one for ils/elles. In the passé composé, verbs marked with être use "(e)(s)" to show optional agreement with the subject.</span>
     </div>
 
-    <h4 style="margin:18px 0 4px 0; font-size:0.92rem; color:var(--accent);">Other tenses at a glance</h4>
+    <h4 style="margin:18px 0 4px 0; font-size:0.92rem; color:var(--accent);">Additional common verbs (single-tense reference)</h4>
     <table class="gtable">
       <tr><th>Verb</th><th>Present (je)</th><th>Passé composé (j')</th><th>Futur (je)</th><th>Subjonctif (que je)</th></tr>
       <tr><td class="fr">voir</td><td class="fr">vois</td><td class="fr">ai vu</td><td class="fr">verrai</td><td class="fr">voie</td></tr>
@@ -1098,6 +1113,163 @@
 
 <script>
 (function(){
+  // ---- Conjugation tab data: 20 most frequent irregular verbs across 6 tenses ----
+  var CONJ = [
+    {v:"être",      present:["suis","es","est","sommes","êtes","sont"],
+                     pc:["ai été","as été","a été","avons été","avez été","ont été"],
+                     imparfait:["étais","étais","était","étions","étiez","étaient"],
+                     futur:["serai","seras","sera","serons","serez","seront"],
+                     conditionnel:["serais","serais","serait","serions","seriez","seraient"],
+                     subjonctif:["sois","sois","soit","soyons","soyez","soient"]},
+    {v:"avoir",     present:["ai","as","a","avons","avez","ont"],
+                     pc:["ai eu","as eu","a eu","avons eu","avez eu","ont eu"],
+                     imparfait:["avais","avais","avait","avions","aviez","avaient"],
+                     futur:["aurai","auras","aura","aurons","aurez","auront"],
+                     conditionnel:["aurais","aurais","aurait","aurions","auriez","auraient"],
+                     subjonctif:["aie","aies","ait","ayons","ayez","aient"]},
+    {v:"aller",     present:["vais","vas","va","allons","allez","vont"],
+                     pc:["suis allé(e)","es allé(e)","est allé(e)","sommes allé(e)s","êtes allé(e)(s)","sont allé(e)s"],
+                     imparfait:["allais","allais","allait","allions","alliez","allaient"],
+                     futur:["irai","iras","ira","irons","irez","iront"],
+                     conditionnel:["irais","irais","irait","irions","iriez","iraient"],
+                     subjonctif:["aille","ailles","aille","allions","alliez","aillent"]},
+    {v:"faire",     present:["fais","fais","fait","faisons","faites","font"],
+                     pc:["ai fait","as fait","a fait","avons fait","avez fait","ont fait"],
+                     imparfait:["faisais","faisais","faisait","faisions","faisiez","faisaient"],
+                     futur:["ferai","feras","fera","ferons","ferez","feront"],
+                     conditionnel:["ferais","ferais","ferait","ferions","feriez","feraient"],
+                     subjonctif:["fasse","fasses","fasse","fassions","fassiez","fassent"]},
+    {v:"dire",      present:["dis","dis","dit","disons","dites","disent"],
+                     pc:["ai dit","as dit","a dit","avons dit","avez dit","ont dit"],
+                     imparfait:["disais","disais","disait","disions","disiez","disaient"],
+                     futur:["dirai","diras","dira","dirons","direz","diront"],
+                     conditionnel:["dirais","dirais","dirait","dirions","diriez","diraient"],
+                     subjonctif:["dise","dises","dise","disions","disiez","disent"]},
+    {v:"voir",      present:["vois","vois","voit","voyons","voyez","voient"],
+                     pc:["ai vu","as vu","a vu","avons vu","avez vu","ont vu"],
+                     imparfait:["voyais","voyais","voyait","voyions","voyiez","voyaient"],
+                     futur:["verrai","verras","verra","verrons","verrez","verront"],
+                     conditionnel:["verrais","verrais","verrait","verrions","verriez","verraient"],
+                     subjonctif:["voie","voies","voie","voyions","voyiez","voient"]},
+    {v:"savoir",    present:["sais","sais","sait","savons","savez","savent"],
+                     pc:["ai su","as su","a su","avons su","avez su","ont su"],
+                     imparfait:["savais","savais","savait","savions","saviez","savaient"],
+                     futur:["saurai","sauras","saura","saurons","saurez","sauront"],
+                     conditionnel:["saurais","saurais","saurait","saurions","sauriez","sauraient"],
+                     subjonctif:["sache","saches","sache","sachions","sachiez","sachent"]},
+    {v:"pouvoir",   present:["peux","peux","peut","pouvons","pouvez","peuvent"],
+                     pc:["ai pu","as pu","a pu","avons pu","avez pu","ont pu"],
+                     imparfait:["pouvais","pouvais","pouvait","pouvions","pouviez","pouvaient"],
+                     futur:["pourrai","pourras","pourra","pourrons","pourrez","pourront"],
+                     conditionnel:["pourrais","pourrais","pourrait","pourrions","pourriez","pourraient"],
+                     subjonctif:["puisse","puisses","puisse","puissions","puissiez","puissent"]},
+    {v:"vouloir",   present:["veux","veux","veut","voulons","voulez","veulent"],
+                     pc:["ai voulu","as voulu","a voulu","avons voulu","avez voulu","ont voulu"],
+                     imparfait:["voulais","voulais","voulait","voulions","vouliez","voulaient"],
+                     futur:["voudrai","voudras","voudra","voudrons","voudrez","voudront"],
+                     conditionnel:["voudrais","voudrais","voudrait","voudrions","voudriez","voudraient"],
+                     subjonctif:["veuille","veuilles","veuille","voulions","vouliez","veuillent"]},
+    {v:"devoir",    present:["dois","dois","doit","devons","devez","doivent"],
+                     pc:["ai dû","as dû","a dû","avons dû","avez dû","ont dû"],
+                     imparfait:["devais","devais","devait","devions","deviez","devaient"],
+                     futur:["devrai","devras","devra","devrons","devrez","devront"],
+                     conditionnel:["devrais","devrais","devrait","devrions","devriez","devraient"],
+                     subjonctif:["doive","doives","doive","devions","deviez","doivent"]},
+    {v:"venir",     present:["viens","viens","vient","venons","venez","viennent"],
+                     pc:["suis venu(e)","es venu(e)","est venu(e)","sommes venu(e)s","êtes venu(e)(s)","sont venu(e)s"],
+                     imparfait:["venais","venais","venait","venions","veniez","venaient"],
+                     futur:["viendrai","viendras","viendra","viendrons","viendrez","viendront"],
+                     conditionnel:["viendrais","viendrais","viendrait","viendrions","viendriez","viendraient"],
+                     subjonctif:["vienne","viennes","vienne","venions","veniez","viennent"]},
+    {v:"tenir",     present:["tiens","tiens","tient","tenons","tenez","tiennent"],
+                     pc:["ai tenu","as tenu","a tenu","avons tenu","avez tenu","ont tenu"],
+                     imparfait:["tenais","tenais","tenait","tenions","teniez","tenaient"],
+                     futur:["tiendrai","tiendras","tiendra","tiendrons","tiendrez","tiendront"],
+                     conditionnel:["tiendrais","tiendrais","tiendrait","tiendrions","tiendriez","tiendraient"],
+                     subjonctif:["tienne","tiennes","tienne","tenions","teniez","tiennent"]},
+    {v:"prendre",   present:["prends","prends","prend","prenons","prenez","prennent"],
+                     pc:["ai pris","as pris","a pris","avons pris","avez pris","ont pris"],
+                     imparfait:["prenais","prenais","prenait","prenions","preniez","prenaient"],
+                     futur:["prendrai","prendras","prendra","prendrons","prendrez","prendront"],
+                     conditionnel:["prendrais","prendrais","prendrait","prendrions","prendriez","prendraient"],
+                     subjonctif:["prenne","prennes","prenne","prenions","preniez","prennent"]},
+    {v:"mettre",    present:["mets","mets","met","mettons","mettez","mettent"],
+                     pc:["ai mis","as mis","a mis","avons mis","avez mis","ont mis"],
+                     imparfait:["mettais","mettais","mettait","mettions","mettiez","mettaient"],
+                     futur:["mettrai","mettras","mettra","mettrons","mettrez","mettront"],
+                     conditionnel:["mettrais","mettrais","mettrait","mettrions","mettriez","mettraient"],
+                     subjonctif:["mette","mettes","mette","mettions","mettiez","mettent"]},
+    {v:"sortir",    present:["sors","sors","sort","sortons","sortez","sortent"],
+                     pc:["suis sorti(e)","es sorti(e)","est sorti(e)","sommes sorti(e)s","êtes sorti(e)(s)","sont sorti(e)s"],
+                     imparfait:["sortais","sortais","sortait","sortions","sortiez","sortaient"],
+                     futur:["sortirai","sortiras","sortira","sortirons","sortirez","sortiront"],
+                     conditionnel:["sortirais","sortirais","sortirait","sortirions","sortiriez","sortiraient"],
+                     subjonctif:["sorte","sortes","sorte","sortions","sortiez","sortent"]},
+    {v:"partir",    present:["pars","pars","part","partons","partez","partent"],
+                     pc:["suis parti(e)","es parti(e)","est parti(e)","sommes parti(e)s","êtes parti(e)(s)","sont parti(e)s"],
+                     imparfait:["partais","partais","partait","partions","partiez","partaient"],
+                     futur:["partirai","partiras","partira","partirons","partirez","partiront"],
+                     conditionnel:["partirais","partirais","partirait","partirions","partiriez","partiraient"],
+                     subjonctif:["parte","partes","parte","partions","partiez","partent"]},
+    {v:"connaître", present:["connais","connais","connaît","connaissons","connaissez","connaissent"],
+                     pc:["ai connu","as connu","a connu","avons connu","avez connu","ont connu"],
+                     imparfait:["connaissais","connaissais","connaissait","connaissions","connaissiez","connaissaient"],
+                     futur:["connaîtrai","connaîtras","connaîtra","connaîtrons","connaîtrez","connaîtront"],
+                     conditionnel:["connaîtrais","connaîtrais","connaîtrait","connaîtrions","connaîtriez","connaîtraient"],
+                     subjonctif:["connaisse","connaisses","connaisse","connaissions","connaissiez","connaissent"]},
+    {v:"croire",    present:["crois","crois","croit","croyons","croyez","croient"],
+                     pc:["ai cru","as cru","a cru","avons cru","avez cru","ont cru"],
+                     imparfait:["croyais","croyais","croyait","croyions","croyiez","croyaient"],
+                     futur:["croirai","croiras","croira","croirons","croirez","croiront"],
+                     conditionnel:["croirais","croirais","croirait","croirions","croiriez","croiraient"],
+                     subjonctif:["croie","croies","croie","croyions","croyiez","croient"]},
+    {v:"boire",     present:["bois","bois","boit","buvons","buvez","boivent"],
+                     pc:["ai bu","as bu","a bu","avons bu","avez bu","ont bu"],
+                     imparfait:["buvais","buvais","buvait","buvions","buviez","buvaient"],
+                     futur:["boirai","boiras","boira","boirons","boirez","boiront"],
+                     conditionnel:["boirais","boirais","boirait","boirions","boiriez","boiraient"],
+                     subjonctif:["boive","boives","boive","buvions","buviez","boivent"]},
+    {v:"écrire",    present:["écris","écris","écrit","écrivons","écrivez","écrivent"],
+                     pc:["ai écrit","as écrit","a écrit","avons écrit","avez écrit","ont écrit"],
+                     imparfait:["écrivais","écrivais","écrivait","écrivions","écriviez","écrivaient"],
+                     futur:["écrirai","écriras","écrira","écrirons","écrirez","écriront"],
+                     conditionnel:["écrirais","écrirais","écrirait","écririons","écririez","écriraient"],
+                     subjonctif:["écrive","écrives","écrive","écrivions","écriviez","écrivent"]},
+    {v:"lire",      present:["lis","lis","lit","lisons","lisez","lisent"],
+                     pc:["ai lu","as lu","a lu","avons lu","avez lu","ont lu"],
+                     imparfait:["lisais","lisais","lisait","lisions","lisiez","lisaient"],
+                     futur:["lirai","liras","lira","lirons","lirez","liront"],
+                     conditionnel:["lirais","lirais","lirait","lirions","liriez","liraient"],
+                     subjonctif:["lise","lises","lise","lisions","lisiez","lisent"]}
+  ];
+
+  function renderConjTable(tense){
+    var body = document.getElementById('conjTableBody');
+    if(!body) return;
+    var rows = CONJ.map(function(verb){
+      var forms = verb[tense] || [];
+      var cells = forms.map(function(f){ return '<td class="fr">'+f+'</td>'; }).join('');
+      return '<tr><td class="fr"><strong>'+verb.v+'</strong></td>'+cells+'</tr>';
+    });
+    body.innerHTML = rows.join('');
+  }
+
+  (function initConjTabs(){
+    var tabs = document.getElementById('tenseTabs');
+    if(!tabs) return;
+    renderConjTable('present');
+    var subjNote = document.getElementById('subjNote');
+    tabs.querySelectorAll('.tense-tab').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        tabs.querySelectorAll('.tense-tab').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var tense = btn.getAttribute('data-tense');
+        renderConjTable(tense);
+        if(subjNote) subjNote.style.display = (tense === 'subjonctif') ? 'block' : 'none';
+      });
+    });
+  })();
+
   var topics = Array.prototype.slice.call(document.querySelectorAll('.topic'));
   var tocList = document.getElementById('tocList');
   var cats = {};
