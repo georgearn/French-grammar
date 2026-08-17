@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>French Grammar Guide — A2 to B2</title>
+<style>
+  :root{
+    --bg:#faf8f5;
+    --card:#ffffff;
+    --ink:#1f2430;
+    --muted:#6b7280;
+    --line:#e7e2da;
+    --accent:#1e5f74;
+    --accent-light:#e4f0f3;
+    --accent2:#b5495b;
+    --accent2-light:#fbe9ec;
+    --tag:#2e7d5b;
+    --tag-light:#e5f4ec;
+    --radius:14px;
+    --maxw:760px;
+    font-size:16px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    padding-bottom:80px;
+  }
+  .fr{ font-style:normal; }
+  .en{ color:var(--muted); font-size:0.92em; }
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(135deg,var(--accent),#164a5a);
+    color:#fff;
+    padding:12px 14px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.12);
+  }
+  header .top-row{
+    display:flex; align-items:center; gap:10px;
+  }
+  header h1{
+    font-size:1.05rem;
+    margin:0;
+    flex:1;
+    font-weight:700;
+  }
+  header .subtitle{
+    font-size:0.75rem;
+    opacity:0.85;
+    margin-top:2px;
+  }
+  #menuBtn{
+    background:rgba(255,255,255,0.15);
+    border:none; color:#fff;
+    width:40px;height:40px;border-radius:10px;
+    font-size:1.2rem; cursor:pointer;
+    flex-shrink:0;
+  }
+  #searchBox{
+    width:100%;
+    margin-top:10px;
+    padding:9px 12px;
+    border-radius:10px;
+    border:none;
+    font-size:0.95rem;
+    background:rgba(255,255,255,0.92);
+    color:#1f2430;
+  }
+  #searchBox:focus{ outline:2px solid #fff; }
+
+  /* Breadcrumb / progress strip */
+  #crumb{
+    max-width:var(--maxw); margin:0 auto;
+    padding:8px 16px 0 16px;
+    font-size:0.78rem;
+    color:var(--muted);
+    min-height:18px;
+  }
+
+  main{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:6px 14px 40px 14px;
+  }
+
+  /* Table of contents (slide-over) */
+  #tocOverlay{
+    position:fixed; inset:0; background:rgba(0,0,0,0.35);
+    display:none; z-index:100;
+  }
+  #tocOverlay.open{ display:block; }
+  #tocPanel{
+    position:fixed; top:0; right:0; bottom:0;
+    width:88%; max-width:380px;
+    background:#fff;
+    z-index:101;
+    transform:translateX(100%);
+    transition:transform 0.25s ease;
+    overflow-y:auto;
+    padding:16px;
+    box-shadow:-4px 0 20px rgba(0,0,0,0.2);
+  }
+  #tocOverlay.open #tocPanel{ transform:translateX(0); }
+  #tocPanel h2{
+    font-size:1rem; margin:0 0 10px 0; display:flex; justify-content:space-between; align-items:center;
+  }
+  #closeToc{
+    background:var(--line); border:none; width:32px;height:32px;border-radius:8px; font-size:1rem; cursor:pointer;
+  }
+  .toc-cat{
+    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.04em;
+    color:var(--accent); font-weight:700;
+    margin:16px 0 6px 0;
+  }
+  .toc-cat:first-of-type{ margin-top:4px; }
+  .toc-link{
+    display:block;
+    padding:8px 10px;
+    border-radius:8px;
+    color:var(--ink);
+    text-decoration:none;
+    font-size:0.9rem;
+    border-bottom:1px solid var(--line);
+  }
+  .toc-link:active, .toc-link:hover{ background:var(--accent-light); }
+
+  /* Category section headers within main */
+  .category{
+    margin-top:26px;
+    margin-bottom:8px;
+  }
+  .category h2{
+    font-size:1.15rem;
+    color:var(--accent);
+    border-bottom:2px solid var(--accent);
+    padding-bottom:6px;
+    margin:0;
+  }
+
+  /* Topic cards */
+  .topic{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px 16px 14px 16px;
+    margin:14px 0;
+    scroll-margin-top:96px;
+  }
+  .topic h3{
+    margin:0 0 4px 0;
+    font-size:1.02rem;
+    color:var(--ink);
+  }
+  .topic h3 .fr-title{ color:var(--accent); }
+  .topic .level-tag{
+    display:inline-block;
+    font-size:0.68rem;
+    font-weight:700;
+    padding:2px 7px;
+    border-radius:20px;
+    background:var(--tag-light);
+    color:var(--tag);
+    margin-left:6px;
+    vertical-align:middle;
+  }
+  .topic .en-sub{
+    color:var(--muted);
+    font-size:0.85rem;
+    margin-bottom:10px;
+  }
+  .rule{
+    margin:8px 0;
+    font-size:0.94rem;
+  }
+  .rule .fr{ display:block; }
+  .rule .en{ display:block; margin-top:2px; }
+  .examples{
+    margin:10px 0 4px 0;
+    padding:10px 12px;
+    background:var(--accent-light);
+    border-left:3px solid var(--accent);
+    border-radius:8px;
+  }
+  .examples .ex{
+    margin:6px 0;
+    font-size:0.92rem;
+  }
+  .examples .ex .fr{ font-weight:600; }
+  .examples .ex .en{ display:block; }
+  table.gtable{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0;
+    font-size:0.85rem;
+  }
+  table.gtable th, table.gtable td{
+    border:1px solid var(--line);
+    padding:5px 7px;
+    text-align:left;
+  }
+  table.gtable th{
+    background:var(--accent-light);
+    color:var(--accent);
+    font-size:0.75rem;
+    text-transform:uppercase;
+  }
+  .note{
+    margin-top:10px;
+    padding:8px 10px;
+    background:var(--accent2-light);
+    border-left:3px solid var(--accent2);
+    border-radius:8px;
+    font-size:0.86rem;
+  }
+  .note .fr{ display:block; font-weight:600; }
+  .note .en{ display:block; }
+
+  /* Cross reference links */
+  .xref-box{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+    font-size:0.85rem;
+  }
+  .xref-box .xref-label{
+    color:var(--muted);
+    margin-right:4px;
+  }
+  .xref{
+    display:inline-block;
+    background:var(--accent-light);
+    color:var(--accent);
+    text-decoration:none;
+    padding:4px 9px;
+    border-radius:20px;
+    font-size:0.82rem;
+    margin:3px 4px 3px 0;
+    border:1px solid transparent;
+  }
+  .xref:active{ border-color:var(--accent); }
+  .xref.back-style{
+    background:var(--accent2-light);
+    color:var(--accent2);
+  }
+
+  /* Floating back button */
+  #backBtn{
+    position:fixed;
+    right:16px; bottom:20px;
+    z-index:60;
+    background:var(--accent2);
+    color:#fff;
+    border:none;
+    padding:11px 16px;
+    border-radius:30px;
+    font-size:0.88rem;
+    font-weight:600;
+    box-shadow:0 4px 14px rgba(0,0,0,0.25);
+    display:none;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+  }
+  #backBtn.show{ display:flex; }
+
+  #topBtn{
+    position:fixed;
+    left:16px; bottom:20px;
+    z-index:60;
+    background:#fff;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    padding:11px 14px;
+    border-radius:30px;
+    font-size:0.88rem;
+    font-weight:600;
+    box-shadow:0 4px 14px rgba(0,0,0,0.15);
+    display:none;
+    cursor:pointer;
+  }
+  #topBtn.show{ display:block; }
+
+  .intro{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-top:14px;
+    font-size:0.92rem;
+  }
+  .intro h2{ margin-top:0; font-size:1.05rem; color:var(--accent); }
+  .intro ul{ margin:8px 0 0 18px; padding:0; font-size:0.9rem; }
+  .intro li{ margin-bottom:4px; }
+  .src-list{
+    font-size:0.78rem;
+    color:var(--muted);
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed var(--line);
+  }
+
+  .hidden{ display:none !important; }
+
+  mark{
+    background:#fff2a8;
+    padding:0 2px;
+    border-radius:3px;
+  }
+
+  .highlight-flash{
+    animation:flash 1.4s ease;
+  }
+  @keyframes flash{
+    0%{ background:#fff2a8; }
+    100%{ background:var(--card); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top-row">
+    <div>
+      <h1>French Grammar Guide</h1>
+      <div class="subtitle">A2 → B2 · explanations in English · tap 🔎 to jump around</div>
+    </div>
+    <button id="menuBtn" aria-label="Open contents">☰</button>
+  </div>
+  <input type="text" id="searchBox" placeholder="Search a topic (e.g. subjunctive, si, dont)…">
+</header>
+
+<div id="crumb"></div>
+
+<main id="main">
+
+  <div class="intro" id="intro">
+    <h2>How to use this guide</h2>
+    <p><span class="fr">Ce guide couvre la grammaire française du niveau A2 au niveau B2.</span><br>
+    <span class="en">This guide covers French grammar from A2 to B2 level, built from your featured resources.</span></p>
+    <ul>
+      <li>Tap <strong>☰</strong> anytime to jump straight to any topic, grouped by category.</li>
+      <li>Every topic has the French rule, an English explanation, and worked examples with translations.</li>
+      <li>When a topic mentions another one ("see also"), tap the pill — a <strong>◀ Back</strong> button appears at the bottom right so you can jump straight back to where you were.</li>
+      <li>Works fully offline once loaded — save it to your Home Screen for one-tap access on your phone or iPad.</li>
+    </ul>
+    <div class="src-list">
+      Based on: <em>Mémento grammatical</em>, <em>Grammaire progressive du français</em> (Niveau intermédiaire A2‑B1 &amp; Niveau avancé B1‑B2), and <em>Édito</em> B1/B2 — your featured French resources.
+    </div>
+  </div>
+
+  <!-- ================= CATEGORY 1 : NOUN GROUP ================= -->
+  <div class="category" id="cat-nom">
+    <h2>1. The Noun Group <span class="en" style="font-size:0.7em;">Le groupe nominal</span></h2>
+  </div>
+
+  <section class="topic" id="genre-noms" data-cat="Noun Group" data-title="Gender of nouns">
+    <h3><span class="fr-title">Le genre des noms</span> <span class="level-tag">A1</span></h3>
+    <div class="en-sub">Gender of nouns</div>
+    <div class="rule">
+      <span class="fr">En français, chaque nom a un genre : masculin ou féminin.</span>
+      <span class="en">Every French noun is either masculine or feminine — there's no neuter. Certain endings are a useful (not perfect) clue.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Often masculine</th><th>Often feminine</th></tr>
+      <tr><td>-ment, -eil, -ier, -isme, -oir, -eau, -ail, -in, -al, -teur, -age, -on</td>
+          <td>-té, -tude, -ette, -aille, -ie, -ade, -esse, -ure, -ance, -ence, -tion, -son, -eur</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">un chien, une chienne</span><span class="en">a (male) dog, a (female) dog — for people/animals, gender usually matches sex.</span></div>
+    </div>
+  </section>
+
+  <section class="topic" id="nombre-noms" data-cat="Noun Group" data-title="Plural of nouns">
+    <h3><span class="fr-title">Le nombre des noms</span> <span class="level-tag">A1</span></h3>
+    <div class="en-sub">Singular / plural of nouns</div>
+    <div class="rule">
+      <span class="fr">Le pluriel régulier s'obtient en ajoutant -s.</span>
+      <span class="en">The default plural adds -s (silent). There are a few common exceptions.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Ending</th><th>Rule</th><th>Example</th></tr>
+      <tr><td>-eu, -eau</td><td>+ x</td><td class="fr">un cheveu → des cheveux</td></tr>
+      <tr><td>-al</td><td>→ -aux</td><td class="fr">un journal → des journaux</td></tr>
+      <tr><td>-s, -x, -z</td><td>no change</td><td class="fr">un pays → des pays</td></tr>
+    </table>
+  </section>
+
+  <section class="topic" id="adjectifs-qualificatifs" data-cat="Noun Group" data-title="Descriptive adjectives">
+    <h3><span class="fr-title">Les adjectifs qualificatifs</span> <span class="level-tag">A2</span></h3>
+    <div class="en-sub">Descriptive adjectives: agreement &amp; position</div>
+    <div class="rule">
+      <span class="fr">L'adjectif s'accorde en genre et en nombre avec le nom.</span>
+      <span class="en">Adjectives agree with the noun in gender and number. Most just add -e (feminine) and -s (plural).</span>
+    </div>
+    <div class="note">
+      <span class="fr">beau/nouveau/vieux → bel/nouvel/vieil devant une voyelle ou un h muet.</span>
+      <span class="en">A handful of masculine adjectives change form before a vowel sound: un <strong>bel</strong> appartement, un <strong>nouvel</strong> étudiant, un <strong>vieil</strong> homme.</span>
+    </div>
+    <div class="rule" style="margin-top:10px;">
+      <span class="fr">La place de l'adjectif : la plupart se placent après le nom ; certains courts et fréquents se placent avant.</span>
+      <span class="en">Most adjectives follow the noun (color, nationality, shape…). A short list of common short adjectives go before it: petit, grand, beau, joli, bon, jeune, vieux, long, dernier, mauvais, nouveau.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">une bonne amie / un long voyage</span><span class="en">a good (female) friend / a long trip — short, frequent adjectives go before the noun.</span></div>
+      <div class="ex"><span class="fr">une table ronde / un ami sénégalais</span><span class="en">a round table / a Senegalese friend — shape and nationality go after.</span></div>
+    </div>
+    <div class="note">
+      <span class="fr">Certains adjectifs changent de sens selon leur place.</span>
+      <span class="en">A few adjectives shift meaning depending on position: <em>un homme pauvre</em> (a poor/penniless man, literal) vs <em>mon pauvre ami</em> (my poor friend, meaning "I feel sorry for you", figurative).</span>
+    </div>
+  </section>
+
+  <section class="topic" id="demonstratifs" data-cat="Noun Group" data-title="Demonstrative adjectives & pronouns">
+    <h3><span class="fr-title">Démonstratifs : adjectifs et pronoms</span> <span class="level-tag">A2</span></h3>
+    <div class="en-sub">Demonstrative adjectives (this/that) and pronouns (this one/that one)</div>
+    <table class="gtable">
+      <tr><th></th><th>Masc. sg.</th><th>Fem. sg.</th><th>Plural</th></tr>
+      <tr><td>Adjective</td><td class="fr">ce / cet</td><td class="fr">cette</td><td class="fr">ces</td></tr>
+      <tr><td>Pronoun</td><td class="fr">celui</td><td class="fr">celle</td><td class="fr">ceux / celles</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">cette série / ces grands enfants</span><span class="en">this series / these big kids</span></div>
+      <div class="ex"><span class="fr">Celles de Marjane Satrapi ? / Celles-ci ou celles-là ?</span><span class="en">The ones by Marjane Satrapi? / These ones or those ones? — pronouns replace "adjective + noun" to avoid repeating the noun.</span></div>
+    </div>
+  </section>
+
+  <section class="topic" id="possessifs" data-cat="Noun Group" data-title="Possessive adjectives & pronouns">
+    <h3><span class="fr-title">Possessifs : adjectifs et pronoms</span> <span class="level-tag">A2</span></h3>
+    <div class="en-sub">Possessive adjectives (my/your…) and pronouns (mine/yours…)</div>
+    <div class="rule">
+      <span class="fr">L'adjectif possessif s'accorde avec l'objet possédé, pas avec le possesseur.</span>
+      <span class="en">Unlike English, the possessive adjective agrees with the thing owned, not the owner: <em>ma maison</em> ("my house", feminine) but <em>mon chat</em> ("my cat", masculine) — even said by the same person.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Owned (masc.)</th><th>Mine</th><th>Owned (fem.)</th><th>Mine</th></tr>
+      <tr><td class="fr">mon livre</td><td class="fr">le mien</td><td class="fr">ma sœur</td><td class="fr">la mienne</td></tr>
+      <tr><td class="fr">ton fils</td><td class="fr">le tien</td><td class="fr">ta fille</td><td class="fr">la tienne</td></tr>
+      <tr><td class="fr">notre cours</td><td class="fr">le nôtre</td><td class="fr">notre amie</td><td class="fr">la nôtre</td></tr>
+    </table>
+  </section>
+
+  <section class="topic" id="indefinis" data-cat="Noun Group" data-title="Indefinite adjectives & pronouns (chaque / tout)">
+    <h3><span class="fr-title">Indéfinis : chaque, tout</span> <span class="level-tag">A2/B1</span></h3>
+    <div class="en-sub">Indefinite adjectives &amp; pronouns expressing quantity</div>
+    <div class="rule">
+      <span class="fr"><strong>Chaque</strong> est toujours singulier ; <strong>tout</strong> s'accorde en genre et en nombre.</span>
+      <span class="en"><strong>Chaque</strong> ("each") is always singular. <strong>Tout</strong> ("all/every") agrees: tout/toute/tous/toutes.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Je parle à chaque étudiant.</span><span class="en">I speak to each student (one at a time).</span></div>
+      <div class="ex"><span class="fr">Je parle à tous les étudiants.</span><span class="en">I speak to all the students (as a group).</span></div>
+      <div class="ex"><span class="fr">Chaque étudiant(e) a parlé → Chacun(e) a parlé.</span><span class="en">The pronoun chacun(e) replaces "chaque + noun".</span></div>
+      <div class="ex"><span class="fr">Tout va bien. / Je sais tout.</span><span class="en">Everything is fine. / I know everything — here "tout" is invariable, meaning "everything".</span></div>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY 2 : PRONOUNS ================= -->
+  <div class="category" id="cat-pronoms">
+    <h2>2. Pronouns <span class="en" style="font-size:0.7em;">Les pronoms</span></h2>
+  </div>
+
+  <section class="topic" id="pronoms-complements" data-cat="Pronouns" data-title="Object pronouns, y and en">
+    <h3><span class="fr-title">Pronoms compléments, y et en</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Direct/indirect object pronouns, and the pronouns y / en</div>
+    <table class="gtable">
+      <tr><th>Direct (COD)</th><th>Indirect (COI)</th></tr>
+      <tr><td class="fr">me, te, le/la, nous, vous, les</td><td class="fr">me, te, lui, nous, vous, leur</td></tr>
+    </table>
+    <div class="note">
+      <span class="fr">Le, la, les = choses ou personnes ; lui, leur = personnes seulement.</span>
+      <span class="en">Le/la/les can replace things or people; lui/leur only replace people (indirect object, "to someone").</span>
+    </div>
+    <div class="rule" style="margin-top:10px;">
+      <span class="fr"><strong>En</strong> remplace "de + nom" (lieu d'origine, quantité).</span>
+      <span class="en"><strong>En</strong> replaces "de + noun" — where you're coming from, or a quantity.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Tu viens de l'école ? – Oui, j'en viens.</span><span class="en">Coming from school? – Yes, I'm coming from there.</span></div>
+      <div class="ex"><span class="fr">Tu as des amis ici ? – Oui, j'en ai beaucoup.</span><span class="en">Do you have friends here? – Yes, I have many (of them).</span></div>
+    </div>
+    <div class="rule">
+      <span class="fr"><strong>Y</strong> remplace "à + nom" ou un lieu (où on est/va).</span>
+      <span class="en"><strong>Y</strong> replaces "à + noun" or a location (where you are/going).</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Tu vas à l'école ? – Oui, j'y vais.</span><span class="en">Are you going to school? – Yes, I'm going (there).</span></div>
+      <div class="ex"><span class="fr">Tu as pensé à ma proposition ? – Oui, j'y ai pensé.</span><span class="en">Did you think about my proposal? – Yes, I thought about it.</span></div>
+    </div>
+    <div class="note">
+      <span class="fr">Place des pronoms : devant le verbe conjugué, sauf à l'impératif affirmatif.</span>
+      <span class="en">Object pronouns go before the conjugated verb (Je le vois / Je l'ai vu / Ne lui parle pas), except after an affirmative command: Donne-<strong>moi</strong> ce livre.</span>
+    </div>
+  </section>
+
+  <section class="topic" id="relatifs-simples" data-cat="Pronouns" data-title="Simple relative pronouns (qui, que, où)">
+    <h3><span class="fr-title">Pronoms relatifs simples</span> <span class="level-tag">A2/B1</span></h3>
+    <div class="en-sub">Simple relative pronouns: qui, que, où</div>
+    <div class="rule">
+      <span class="fr">Le pronom relatif réunit deux phrases et évite une répétition.</span>
+      <span class="en">A relative pronoun joins two sentences and avoids repeating the noun — like "who/which/where" in English.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Function</th><th>Pronoun</th><th>Example</th></tr>
+      <tr><td>Subject</td><td class="fr">qui</td><td class="fr">Le livre <strong>qui</strong> est sur la table est à moi.</td></tr>
+      <tr><td>Object</td><td class="fr">que / qu'</td><td class="fr">Voici le travail <strong>que</strong> tu dois faire.</td></tr>
+      <tr><td>Place / time</td><td class="fr">où</td><td class="fr">C'est l'entreprise <strong>où</strong> je travaille.</td></tr>
+    </table>
+    <div class="xref-box">
+      <span class="xref-label">These are the basics — for more complex sentences (whose, prepositions + which):</span>
+      <a class="xref" data-target="relatifs-composes">→ Compound relative pronouns (dont, lequel…)</a>
+    </div>
+  </section>
+
+  <section class="topic" id="relatifs-composes" data-cat="Pronouns" data-title="Compound relative pronouns (dont, lequel, ce qui/ce que)">
+    <h3><span class="fr-title">Pronoms relatifs composés</span> <span class="level-tag">B1/B2</span></h3>
+    <div class="en-sub">Compound relative pronouns: dont, lequel/auquel/duquel, ce qui / ce que / ce dont</div>
+    <div class="rule">
+      <span class="fr">On utilise <strong>dont</strong> quand le verbe ou l'expression se construit avec "de".</span>
+      <span class="en"><strong>Dont</strong> replaces "de + noun" — used for verbs/expressions built with "de" (parler de, avoir besoin de, être content de…), and covers English "whose" and "of which".</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">C'est le livre dont je t'ai parlé.</span><span class="en">That's the book I told you about (parler <strong>de</strong> qqch).</span></div>
+      <div class="ex"><span class="fr">Voici l'auteur dont j'ai lu tous les romans.</span><span class="en">Here's the author whose novels I've all read.</span></div>
+    </div>
+    <div class="rule" style="margin-top:10px;">
+      <span class="fr"><strong>Lequel / laquelle / lesquels / lesquelles</strong> s'utilisent après une préposition (avec, pour, sans, sur…) quand l'antécédent est une chose.</span>
+      <span class="en"><strong>Lequel</strong> and its forms are used after a preposition (avec, pour, sans, sur…) when referring back to a thing. It contracts with à/de: <strong>auquel, duquel</strong>, etc.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Preposition + à</th><th>Preposition + de</th></tr>
+      <tr><td class="fr">auquel, à laquelle, auxquels, auxquelles</td><td class="fr">duquel, de laquelle, desquels, desquelles</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">Le projet auquel je pense te plaira.</span><span class="en">The project I'm thinking of (penser <strong>à</strong>) will please you.</span></div>
+      <div class="ex"><span class="fr">La réunion à laquelle j'ai assisté était longue.</span><span class="en">The meeting I attended was long.</span></div>
+    </div>
+    <div class="rule" style="margin-top:10px;">
+      <span class="fr"><strong>Ce qui / ce que / ce dont</strong> s'utilisent quand il n'y a pas d'antécédent précis (= "la chose qui/que/dont").</span>
+      <span class="en"><strong>Ce qui/ce que/ce dont</strong> are used when there's no specific noun to refer to — "what" in English.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Je ne sais pas ce qui se passe.</span><span class="en">I don't know what's happening (subject).</span></div>
+      <div class="ex"><span class="fr">Dis-moi ce que tu veux.</span><span class="en">Tell me what you want (object).</span></div>
+      <div class="ex"><span class="fr">Ce dont j'ai besoin, c'est de temps.</span><span class="en">What I need is time.</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="relatifs-simples">← Simple relative pronouns (qui, que, où)</a>
+      <a class="xref" data-target="mise-en-relief">→ Mise en relief (uses "ce qui/ce que… c'est")</a>
+    </div>
+  </section>
+
+  <section class="topic" id="interrogatifs" data-cat="Pronouns" data-title="Interrogative pronouns (lequel)">
+    <h3><span class="fr-title">Pronoms interrogatifs</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Interrogative pronouns: lequel and forms — "which one(s)"</div>
+    <div class="rule">
+      <span class="fr">Ils remplacent "quel(le)(s) + nom" pour interroger sur l'identité.</span>
+      <span class="en">They replace "quel(le)(s) + noun" when asking "which one(s)?"</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Quels prénoms préfères-tu ? → Lesquels préfères-tu ?</span><span class="en">Which first names do you prefer? → Which ones do you prefer?</span></div>
+      <div class="ex"><span class="fr">De tous tes amis, lequel préfères-tu ?</span><span class="en">Of all your friends, which one do you prefer?</span></div>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY 3 : ADVERB / COMPARISON / NEGATION ================= -->
+  <div class="category" id="cat-adv">
+    <h2>3. Adverbs, Comparison &amp; Negation</h2>
+  </div>
+
+  <section class="topic" id="adverbe" data-cat="Adverbs/Comparison/Negation" data-title="Adverb formation & placement">
+    <h3><span class="fr-title">L'adverbe</span> <span class="level-tag">A2/B1</span></h3>
+    <div class="en-sub">Adverb formation and placement</div>
+    <div class="rule">
+      <span class="fr">L'adverbe est invariable ; il modifie un verbe, un adjectif ou un autre adverbe.</span>
+      <span class="en">Adverbs never agree (unlike adjectives). They can modify a verb (usually placed after it), an adjective, or another adverb (both placed before).</span>
+    </div>
+    <div class="rule" style="margin-top:10px;">
+      <span class="fr">Formation régulière : féminin de l'adjectif + -ment.</span>
+      <span class="en">Regular formation: feminine form of the adjective + -ment.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Rule</th><th>Example</th></tr>
+      <tr><td>Adjective ending in a vowel (masc.)</td><td class="fr">absolu → absolument, poli → poliment</td></tr>
+      <tr><td>-ant → -amment / -ent → -emment</td><td class="fr">méchant → méchamment, récent → récemment</td></tr>
+      <tr><td>Irregular</td><td class="fr">bon → bien, mauvais → mal, gentil → gentiment, bref → brièvement</td></tr>
+    </table>
+  </section>
+
+  <section class="topic" id="comparaison" data-cat="Adverbs/Comparison/Negation" data-title="Comparative & superlative">
+    <h3><span class="fr-title">La comparaison</span> <span class="level-tag">A2/B1</span></h3>
+    <div class="en-sub">Comparative and superlative</div>
+    <table class="gtable">
+      <tr><th></th><th>+ (more)</th><th>= (as)</th><th>– (less)</th></tr>
+      <tr><td>Adjective/adverb</td><td class="fr">plus … que</td><td class="fr">aussi … que</td><td class="fr">moins … que</td></tr>
+      <tr><td>Noun</td><td class="fr">plus de … que</td><td class="fr">autant de … que</td><td class="fr">moins de … que</td></tr>
+      <tr><td>Verb</td><td class="fr">… plus que</td><td class="fr">… autant que</td><td class="fr">… moins que</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">Elle est plus travailleuse que lui.</span><span class="en">She's more hard-working than him.</span></div>
+      <div class="ex"><span class="fr">C'est la personne la plus discrète du groupe.</span><span class="en">She's the most discreet person in the group — superlative complement is introduced by "de", not "dans".</span></div>
+    </div>
+    <div class="note">
+      <span class="fr">Irréguliers : bon → meilleur, bien → mieux.</span>
+      <span class="en">Irregular: bon(ne) → meilleur(e) ("better", adjective); bien → mieux ("better", adverb) — a very common mix-up.</span>
+    </div>
+  </section>
+
+  <section class="topic" id="negation" data-cat="Adverbs/Comparison/Negation" data-title="Negation">
+    <h3><span class="fr-title">La négation</span> <span class="level-tag">A1/A2</span></h3>
+    <div class="en-sub">Negation: ne… pas, plus, jamais, rien, personne</div>
+    <table class="gtable">
+      <tr><th>French</th><th>Meaning</th></tr>
+      <tr><td class="fr">ne … pas</td><td>not</td></tr>
+      <tr><td class="fr">ne … plus</td><td>no longer</td></tr>
+      <tr><td class="fr">ne … jamais</td><td>never</td></tr>
+      <tr><td class="fr">ne … rien / rien ne</td><td>nothing</td></tr>
+      <tr><td class="fr">ne … personne / personne ne</td><td>nobody</td></tr>
+    </table>
+    <div class="note">
+      <span class="fr">Au passé composé, les deux mots encadrent l'auxiliaire — sauf "ne … personne".</span>
+      <span class="en">In the passé composé, the two negation words surround the auxiliary: <em>Il n'a pas fini</em>. Exception: <em>ne … personne</em> surrounds the whole verb group instead: <em>Il n'a vu personne.</em></span>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY 4 : VERBS & TENSES ================= -->
+  <div class="category" id="cat-verbes">
+    <h2>4. Verbs &amp; Tenses <span class="en" style="font-size:0.7em;">Les verbes</span></h2>
+  </div>
+
+  <section class="topic" id="apercu-temps" data-cat="Verbs & Tenses" data-title="Overview of moods & tenses">
+    <h3><span class="fr-title">Aperçu des modes et des temps</span> <span class="level-tag">A2</span></h3>
+    <div class="en-sub">Overview of moods and tenses</div>
+    <table class="gtable">
+      <tr><th>Mood</th><th>Tense</th><th>Example</th></tr>
+      <tr><td rowspan="4">Indicative</td><td>Present</td><td class="fr">je lis</td></tr>
+      <tr><td>Passé composé</td><td class="fr">j'ai lu</td></tr>
+      <tr><td>Imparfait</td><td class="fr">je lisais</td></tr>
+      <tr><td>Future</td><td class="fr">je lirai</td></tr>
+      <tr><td>Conditional</td><td>Present</td><td class="fr">je lirais</td></tr>
+      <tr><td>Subjunctive</td><td>Present</td><td class="fr">que je lise</td></tr>
+    </table>
+  </section>
+
+  <section class="topic" id="passe-compose" data-cat="Verbs & Tenses" data-title="Passé composé">
+    <h3><span class="fr-title">Le passé composé</span> <span class="level-tag">A1/A2</span></h3>
+    <div class="en-sub">Passé composé — the everyday past tense</div>
+    <div class="rule">
+      <span class="fr">Auxiliaire avoir pour la majorité des verbes ; auxiliaire être pour 15 verbes (et leur famille) et les verbes pronominaux.</span>
+      <span class="en">Formed with <strong>avoir</strong> for most verbs, but <strong>être</strong> for 15 verbs of movement/state (aller, arriver, descendre, entrer, monter, mourir, naître, partir, passer, rentrer, rester, retourner, sortir, tomber, venir) and all reflexive verbs.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Il a pris le bus. / Il est parti. / Il s'est levé tard.</span><span class="en">He took the bus. / He left. / He got up late.</span></div>
+    </div>
+    <table class="gtable">
+      <tr><th>Infinitive ending</th><th>Past participle</th><th>Examples</th></tr>
+      <tr><td>-er</td><td>-é</td><td class="fr">aimer → aimé</td></tr>
+      <tr><td>-ir (regular)</td><td>-i</td><td class="fr">finir → fini</td></tr>
+      <tr><td>irregular</td><td>-u / -i / -is / -it / -ert / -eint</td><td class="fr">boire→bu, prendre→pris, faire→fait, ouvrir→ouvert, peindre→peint</td></tr>
+    </table>
+    <div class="note">
+      <span class="fr">Accord : avec être, le participe s'accorde avec le sujet ; avec avoir, seulement si le COD est placé avant le verbe.</span>
+      <span class="en">Agreement: with être, the participle agrees with the subject. With avoir, it only agrees if the direct object comes before the verb — e.g. <em>Je l'ai reçue</em> (referring to a feminine noun already mentioned).</span>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref" data-target="imparfait">→ Imparfait (the other past tense)</a>
+    </div>
+  </section>
+
+  <section class="topic" id="imparfait" data-cat="Verbs & Tenses" data-title="Imparfait">
+    <h3><span class="fr-title">L'imparfait</span> <span class="level-tag">A2</span></h3>
+    <div class="en-sub">Imparfait — background, habits, description in the past</div>
+    <div class="rule">
+      <span class="fr">Radical = celui de "nous" au présent ; terminaisons -ais, -ais, -ait, -ions, -iez, -aient.</span>
+      <span class="en">Stem = the "nous" form of the present tense, minus -ons. Same endings for every verb: -ais, -ais, -ait, -ions, -iez, -aient.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Nous faisons → je faisais</span><span class="en">we do → I was doing/used to do</span></div>
+      <div class="ex"><span class="fr">Avant, j'allais souvent dans ce café.</span><span class="en">I used to go to that café often — habitual past action.</span></div>
+      <div class="ex"><span class="fr">Il faisait frais, mais il ne pleuvait pas.</span><span class="en">It was cool, but it wasn't raining — describing circumstances/background.</span></div>
+    </div>
+    <div class="note">
+      <span class="fr">Passé composé = action ponctuelle/achevée ; imparfait = habitude ou décor.</span>
+      <span class="en">Rule of thumb: passé composé for a completed, one-off event; imparfait for background description or repeated habits. They're often combined in the same sentence: <em>Il pleuvait (imparfait, background) quand je suis sorti (passé composé, event).</em></span>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="passe-compose">← Passé composé</a>
+      <a class="xref" data-target="si-conditions">→ Imparfait is also used after "si" for hypothetical present</a>
+    </div>
+  </section>
+
+  <section class="topic" id="futur-simple" data-cat="Verbs & Tenses" data-title="Futur simple">
+    <h3><span class="fr-title">Le futur simple</span> <span class="level-tag">A2</span></h3>
+    <div class="en-sub">Simple future</div>
+    <div class="rule">
+      <span class="fr">Radical = infinitif (on enlève le -e final des verbes en -re) + terminaisons -ai, -as, -a, -ons, -ez, -ont.</span>
+      <span class="en">Stem = the infinitive (drop the final -e for -re verbs), same endings for every verb.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">parler → je parlerai / prendre → il prendra</span><span class="en">to speak → I will speak / to take → he will take</span></div>
+    </div>
+    <div class="note">
+      <span class="fr">Verbes irréguliers fréquents : être→serai, avoir→aurai, aller→irai, faire→ferai, voir→verrai, pouvoir→pourrai, devoir→devrai, vouloir→voudrai, venir→viendrai, savoir→saurai.</span>
+      <span class="en">A handful of very common verbs have an irregular stem — worth memorizing, they recur constantly.</span>
+    </div>
+  </section>
+
+  <section class="topic" id="conditionnel" data-cat="Verbs & Tenses" data-title="Conditionnel présent">
+    <h3><span class="fr-title">Le conditionnel présent</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Present conditional — "would"</div>
+    <div class="rule">
+      <span class="fr">Formation : radical du futur + terminaisons de l'imparfait.</span>
+      <span class="en">Formation: future stem + imparfait endings. So if you know the future stem and the imparfait endings, you already know the conditional.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Pourriez-vous m'apporter ces documents ?</span><span class="en">Could you bring me these documents? — polite request.</span></div>
+      <div class="ex"><span class="fr">J'aimerais être en vacances.</span><span class="en">I would like to be on vacation — wish.</span></div>
+      <div class="ex"><span class="fr">Marc Filou se présenterait aux élections.</span><span class="en">Marc Filou would reportedly run in the elections — unconfirmed information (common in news style).</span></div>
+      <div class="ex"><span class="fr">Avec 500 000 €, je serais riche et heureux.</span><span class="en">With €500,000, I would be rich and happy — hypothetical.</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref" data-target="si-conditions">→ Si-clauses (condition) use the conditional in the result</a>
+    </div>
+  </section>
+
+  <section class="topic" id="subjonctif" data-cat="Verbs & Tenses" data-title="Subjonctif présent">
+    <h3><span class="fr-title">Le subjonctif présent</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Present subjunctive — obligation, emotion, doubt, wish</div>
+    <div class="rule">
+      <span class="fr">Pour je/tu/il/ils : radical de la 3e pers. du pluriel au présent + -e, -es, -e, -ent. Pour nous/vous : radical de "nous" au présent + -ions, -iez.</span>
+      <span class="en">For je/tu/il/ils, take the "ils" stem of the present indicative; for nous/vous, take the "nous" stem. Endings: -e, -es, -e, -ions, -iez, -ent.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">ils prennent → il faut que je prenne</span><span class="en">they take → it's necessary that I take</span></div>
+      <div class="ex"><span class="fr">nous partons → il faut que nous partions</span><span class="en">we leave → it's necessary that we leave</span></div>
+    </div>
+    <table class="gtable">
+      <tr><th>Verb</th><th>que je / j'…</th></tr>
+      <tr><td class="fr">avoir</td><td class="fr">aie</td></tr>
+      <tr><td class="fr">être</td><td class="fr">sois</td></tr>
+      <tr><td class="fr">aller</td><td class="fr">aille</td></tr>
+      <tr><td class="fr">faire</td><td class="fr">fasse</td></tr>
+      <tr><td class="fr">savoir</td><td class="fr">sache</td></tr>
+      <tr><td class="fr">pouvoir</td><td class="fr">puisse</td></tr>
+      <tr><td class="fr">vouloir</td><td class="fr">veuille</td></tr>
+      <tr><td class="fr">valoir</td><td class="fr">vaille</td></tr>
+      <tr><td class="fr">falloir</td><td class="fr">(il) faille</td></tr>
+      <tr><td class="fr">pleuvoir</td><td class="fr">(il) pleuve</td></tr>
+    </table>
+    <div class="rule" style="margin-top:10px;">
+      <span class="fr">Le subjonctif est déclenché par des verbes/expressions d'obligation, de nécessité, ou de sentiment — à condition qu'il y ait deux sujets différents.</span>
+      <span class="en">Triggered by verbs/expressions of obligation, necessity, or emotion — but only when there are <strong>two different subjects</strong>. With the same subject, use the infinitive instead.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Il faut que tu apprennes des langues.</span><span class="en">You need to learn languages.</span></div>
+      <div class="ex"><span class="fr">Julie aimerait aller à Zanzibar. <em>(même sujet → infinitif)</em></span><span class="en">Julie would like to go to Zanzibar (same subject → infinitive).</span></div>
+      <div class="ex"><span class="fr">Julie aimerait que son ami aille à Zanzibar. <em>(2 sujets → subjonctif)</em></span><span class="en">Julie would like her friend to go to Zanzibar (2 subjects → subjunctive).</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also — the subjunctive is also required after these connectors:</span>
+      <a class="xref" data-target="opposition-concession">→ Concession: bien que, jusqu'à ce que…</a>
+      <a class="xref" data-target="but">→ Purpose: pour que</a>
+    </div>
+  </section>
+
+  <section class="topic" id="passif" data-cat="Verbs & Tenses" data-title="Le passif">
+    <h3><span class="fr-title">Le passif</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">The passive voice</div>
+    <div class="rule">
+      <span class="fr">Le COD de la phrase active devient sujet ; le sujet actif devient complément d'agent (introduit par "par") ; être porte le temps du verbe, suivi du participe passé accordé.</span>
+      <span class="en">The active object becomes the subject; the active subject becomes the "agent" (introduced by "par" = "by"); the auxiliary être carries the tense, followed by the past participle (which agrees with the subject).</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Le chat mange la souris. → La souris est mangée par le chat.</span><span class="en">The cat eats the mouse. → The mouse is eaten by the cat.</span></div>
+    </div>
+  </section>
+
+  <section class="topic" id="gerondif" data-cat="Verbs & Tenses" data-title="Le gérondif">
+    <h3><span class="fr-title">Le gérondif</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">The gerund — "by/while doing"</div>
+    <div class="rule">
+      <span class="fr">Formation : en + participe présent (radical de "nous" + -ant).</span>
+      <span class="en">Formed with en + present participle (nous-stem + -ant). Exceptions: être→étant, avoir→ayant, savoir→sachant.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">D'habitude, je travaille en écoutant la radio.</span><span class="en">I usually work while listening to the radio.</span></div>
+      <div class="ex"><span class="fr">Il a appris le portugais en travaillant avec des Brésiliens.</span><span class="en">He learned Portuguese by working with Brazilians.</span></div>
+    </div>
+    <div class="note">
+      <span class="fr">Les deux verbes doivent avoir le même sujet.</span>
+      <span class="en">Both actions must share the same subject — the gérondif expresses simultaneity or manner.</span>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY 5 : ADVANCED STRUCTURES ================= -->
+  <div class="category" id="cat-avance">
+    <h2>5. Advanced Structures <span class="en" style="font-size:0.7em;">Structures avancées</span></h2>
+  </div>
+
+  <section class="topic" id="si-conditions" data-cat="Advanced Structures" data-title="Conditional sentences (si-clauses)">
+    <h3><span class="fr-title">Les phrases avec si (condition)</span> <span class="level-tag">B1/B2</span></h3>
+    <div class="en-sub">Si-clauses — matching tenses for real, possible, and unreal conditions</div>
+    <div class="rule">
+      <span class="fr">Le temps après "si" détermine le degré de réalité de la condition.</span>
+      <span class="en">The tense after "si" sets how likely/real the condition is. There are three main patterns — mixing them is the classic mistake to avoid.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Si + …</th><th>Result clause</th><th>Meaning</th></tr>
+      <tr><td class="fr">présent</td><td class="fr">présent / impératif / futur</td><td>Real / likely condition</td></tr>
+      <tr><td class="fr">imparfait</td><td class="fr">conditionnel présent</td><td>Hypothetical / unlikely (present or future)</td></tr>
+      <tr><td class="fr">plus-que-parfait</td><td class="fr">conditionnel passé</td><td>Unreal, contrary-to-fact (past)</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">Si tu as le temps demain, passe me voir.</span><span class="en">If you have time tomorrow, come see me. (real condition)</span></div>
+      <div class="ex"><span class="fr">Si j'avais plus de temps, je voyagerais davantage.</span><span class="en">If I had more time, I would travel more. (hypothetical)</span></div>
+      <div class="ex"><span class="fr">Si j'avais su, je ne serais pas venu.</span><span class="en">If I had known, I wouldn't have come. (contrary to fact, past)</span></div>
+    </div>
+    <div class="note">
+      <span class="fr">Pour exprimer une certitude temporelle (pas une condition), on utilise "quand", pas "si".</span>
+      <span class="en">To express a certain future event (not a condition), use "quand" ("when"), not "si": <em>Quand tu seras en vacances, n'oublie pas de passer me voir.</em></span>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="imparfait">← Imparfait</a>
+      <a class="xref back-style" data-target="conditionnel">← Conditionnel présent</a>
+    </div>
+  </section>
+
+  <section class="topic" id="opposition-concession" data-cat="Advanced Structures" data-title="Opposition & concession (bien que, alors que…)">
+    <h3><span class="fr-title">L'opposition et la concession</span> <span class="level-tag">B2</span></h3>
+    <div class="en-sub">Opposition and concession: "although", "whereas", "despite"</div>
+    <div class="rule">
+      <span class="fr">La concession admet un fait tout en maintenant l'idée principale ; l'opposition met en parallèle deux idées contraires.</span>
+      <span class="en">Concession acknowledges a fact while keeping your main point; opposition contrasts two ideas. Some connectors require the subjunctive.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Connector</th><th>Construction</th><th>Mood</th></tr>
+      <tr><td class="fr">bien que, quoique</td><td>+ subjonctif</td><td>subjunctive</td></tr>
+      <tr><td class="fr">jusqu'à ce que</td><td>+ subjonctif</td><td>subjunctive (time limit, related idea)</td></tr>
+      <tr><td class="fr">malgré</td><td>+ nom</td><td>indicative (not a clause)</td></tr>
+      <tr><td class="fr">alors que, tandis que</td><td>+ indicatif</td><td>indicative</td></tr>
+      <tr><td class="fr">pourtant, cependant, néanmoins</td><td>connecteur (2e phrase)</td><td>indicative</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">Bien qu'il pleuve, nous sortons.</span><span class="en">Although it's raining, we're going out.</span></div>
+      <div class="ex"><span class="fr">J'attendrai jusqu'à ce que tu arrives.</span><span class="en">I'll wait until you arrive.</span></div>
+      <div class="ex"><span class="fr">Malgré la pluie, nous sortons.</span><span class="en">Despite the rain, we're going out — "malgré" takes a noun, no subjunctive needed.</span></div>
+      <div class="ex"><span class="fr">Il est calme, alors que sa sœur est très nerveuse.</span><span class="en">He's calm, whereas his sister is very nervous.</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="subjonctif">← Subjonctif présent (needed after bien que / jusqu'à ce que)</a>
+    </div>
+  </section>
+
+  <section class="topic" id="mise-en-relief" data-cat="Advanced Structures" data-title="Mise en relief (c'est…qui/que)">
+    <h3><span class="fr-title">La mise en relief</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Emphatic structures — highlighting the subject or object</div>
+    <div class="examples">
+      <div class="ex"><span class="fr">C'est un plat qui est délicieux.</span><span class="en">It's a dish that is delicious. (emphasizes subject)</span></div>
+      <div class="ex"><span class="fr">C'est un restaurant que je recommande.</span><span class="en">It's a restaurant that I recommend. (emphasizes object)</span></div>
+      <div class="ex"><span class="fr">Ce que je préfère, c'est le gâteau au chocolat.</span><span class="en">What I prefer is chocolate cake.</span></div>
+      <div class="ex"><span class="fr">Ce qui me plaît, ce sont les desserts au chocolat.</span><span class="en">What I like is chocolate desserts.</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="relatifs-composes">← Ce qui / ce que (compound relative pronouns)</a>
+    </div>
+  </section>
+
+  <section class="topic" id="discours-rapporte" data-cat="Advanced Structures" data-title="Discours rapporté (reported speech)">
+    <h3><span class="fr-title">Le discours rapporté</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Reported (indirect) speech</div>
+    <div class="rule">
+      <span class="fr">Au présent, les temps ne changent pas, mais les pronoms et adjectifs possessifs changent.</span>
+      <span class="en">When reporting at the present tense, verb tenses stay the same, but pronouns and possessives shift to match the new speaker's perspective.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Direct speech</th><th>Reported speech</th></tr>
+      <tr><td class="fr">Il dit : « J'ai perdu ma montre. »</td><td class="fr">Il dit qu'il a perdu sa montre.</td></tr>
+      <tr><td class="fr">Il me demande : « Es-tu triste ? »</td><td class="fr">Il me demande si je suis triste.</td></tr>
+      <tr><td class="fr">Elle me demande : « Qu'est-ce que tu veux ? »</td><td class="fr">Elle me demande ce que je veux.</td></tr>
+      <tr><td class="fr">Tu veux savoir : « Qu'est-ce qui te plaît ici ? »</td><td class="fr">Tu veux savoir ce qui me plaît ici.</td></tr>
+    </table>
+    <div class="note">
+      <span class="fr">Yes/no questions → "si" ; questions avec "qu'est-ce que" → "ce que" ; "qu'est-ce qui" → "ce qui".</span>
+      <span class="en">Yes/no questions are introduced with "si" ("whether"). "Qu'est-ce que" becomes "ce que", and "qu'est-ce qui" becomes "ce qui" — the same forms used in the mise en relief and compound relative pronouns above.</span>
+    </div>
+  </section>
+
+  <section class="topic" id="indicateurs-temps" data-cat="Advanced Structures" data-title="Time connectors (depuis, il y a, pendant…)">
+    <h3><span class="fr-title">Les indicateurs de temps</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Time markers — a frequent source of confusion for English speakers</div>
+    <table class="gtable">
+      <tr><th>French</th><th>Use</th><th>Example</th></tr>
+      <tr><td class="fr">depuis</td><td>start of an ongoing action</td><td class="fr">J'habite ici depuis dix ans.</td></tr>
+      <tr><td class="fr">il y a</td><td>ago (past, finished)</td><td class="fr">Je suis arrivée il y a une heure.</td></tr>
+      <tr><td class="fr">pendant</td><td>duration (limited)</td><td class="fr">Je t'ai attendu pendant dix minutes.</td></tr>
+      <tr><td class="fr">pour</td><td>planned duration</td><td class="fr">Je pars en vacances pour deux semaines.</td></tr>
+      <tr><td class="fr">à partir de</td><td>starting point</td><td class="fr">Je serai en vacances à partir de lundi.</td></tr>
+      <tr><td class="fr">jusqu'à</td><td>deadline / end point</td><td class="fr">Le magasin est ouvert jusqu'à 19h.</td></tr>
+      <tr><td class="fr">dès que</td><td>as soon as</td><td class="fr">Appelle-moi dès que tu arrives.</td></tr>
+    </table>
+    <div class="note">
+      <span class="fr">Séquence : d'abord, puis, ensuite, enfin.</span>
+      <span class="en">To sequence actions: d'abord (first), puis/ensuite (then), enfin (finally).</span>
+    </div>
+  </section>
+
+  <section class="topic" id="cause" data-cat="Advanced Structures" data-title="Cause">
+    <h3><span class="fr-title">L'expression de la cause</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Expressing cause/reason</div>
+    <table class="gtable">
+      <tr><th>Connector</th><th>Nuance</th></tr>
+      <tr><td class="fr">parce que</td><td>neutral explanation</td></tr>
+      <tr><td class="fr">comme</td><td>always at the start of the sentence</td></tr>
+      <tr><td class="fr">à cause de + nom</td><td>negative cause</td></tr>
+      <tr><td class="fr">grâce à + nom</td><td>positive cause</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">Comme il fait chaud, je vais à la piscine.</span><span class="en">Since it's hot, I'm going to the pool.</span></div>
+      <div class="ex"><span class="fr">La route est bloquée à cause de la neige.</span><span class="en">The road is blocked because of the snow.</span></div>
+      <div class="ex"><span class="fr">Grâce à tes explications, j'ai compris.</span><span class="en">Thanks to your explanations, I understood.</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref" data-target="consequence">→ Consequence</a>
+      <a class="xref" data-target="but">→ Purpose</a>
+    </div>
+  </section>
+
+  <section class="topic" id="consequence" data-cat="Advanced Structures" data-title="Consequence">
+    <h3><span class="fr-title">L'expression de la conséquence</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Expressing consequence/result</div>
+    <table class="gtable">
+      <tr><th>Connector</th><th>Nuance</th></tr>
+      <tr><td class="fr">donc</td><td>logical consequence</td></tr>
+      <tr><td class="fr">alors</td><td>consequence of a preceding event</td></tr>
+      <tr><td class="fr">c'est pour ça que / c'est pourquoi</td><td>structured discourse</td></tr>
+    </table>
+    <div class="examples">
+      <div class="ex"><span class="fr">Il pleut, donc je prends mon parapluie.</span><span class="en">It's raining, so I'm taking my umbrella.</span></div>
+      <div class="ex"><span class="fr">J'ai raté le bus, c'est pourquoi je suis en retard.</span><span class="en">I missed the bus, which is why I'm late.</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="cause">← Cause</a>
+    </div>
+  </section>
+
+  <section class="topic" id="but" data-cat="Advanced Structures" data-title="Purpose (pour, pour que)">
+    <h3><span class="fr-title">L'expression du but</span> <span class="level-tag">B1</span></h3>
+    <div class="en-sub">Expressing purpose — "in order to / so that"</div>
+    <div class="rule">
+      <span class="fr">Pour + infinitif (même sujet) ; pour que + subjonctif (deux sujets différents).</span>
+      <span class="en">Same rule as the subjunctive: same subject → infinitive; two different subjects → subjunctive.</span>
+    </div>
+    <div class="examples">
+      <div class="ex"><span class="fr">Je vais me coucher pour me reposer.</span><span class="en">I'm going to bed to rest. (same subject → infinitive)</span></div>
+      <div class="ex"><span class="fr">J'économise pour que nous puissions acheter une maison.</span><span class="en">I'm saving so that we can buy a house. (two subjects → subjunctive)</span></div>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="subjonctif">← Subjonctif présent</a>
+    </div>
+  </section>
+
+  <section class="topic" id="verbe-preposition" data-cat="Advanced Structures" data-title="Verb + preposition constructions">
+    <h3><span class="fr-title">Verbes + préposition</span> <span class="level-tag">B1/B2</span></h3>
+    <div class="en-sub">Verb-preposition constructions — French verbs don't always match English patterns</div>
+    <div class="rule">
+      <span class="fr">Beaucoup de verbes français exigent une préposition différente de l'anglais, ou aucune.</span>
+      <span class="en">Many French verbs pair with a different preposition than their English equivalent — or none at all. Worth learning verb + preposition as a single unit.</span>
+    </div>
+    <table class="gtable">
+      <tr><th>Verb + preposition</th><th>Meaning</th></tr>
+      <tr><td class="fr">penser à qqch/qqn</td><td>to think about sth/sb</td></tr>
+      <tr><td class="fr">penser de qqch (opinion)</td><td>to think of sth (opinion)</td></tr>
+      <tr><td class="fr">parler de qqch</td><td>to talk about sth</td></tr>
+      <tr><td class="fr">avoir besoin de</td><td>to need</td></tr>
+      <tr><td class="fr">s'intéresser à</td><td>to be interested in</td></tr>
+      <tr><td class="fr">réussir à + infinitif</td><td>to succeed in / manage to</td></tr>
+      <tr><td class="fr">décider de + infinitif</td><td>to decide to</td></tr>
+      <tr><td class="fr">écouter qqn (no preposition!)</td><td>to listen to sb</td></tr>
+      <tr><td class="fr">attendre qqn (no preposition!)</td><td>to wait for sb</td></tr>
+      <tr><td class="fr">chercher qqch (no preposition!)</td><td>to look for sth</td></tr>
+    </table>
+    <div class="note">
+      <span class="fr">Ces prépositions déterminent ensuite quel pronom relatif utiliser (dont, auquel…).</span>
+      <span class="en">These prepositions are exactly what determines whether a relative clause needs "dont" or "lequel/auquel" — worth cross-checking.</span>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="relatifs-composes">← Compound relative pronouns</a>
+    </div>
+  </section>
+
+  <!-- ================= CATEGORY 6 : CONJUGATION REFERENCE ================= -->
+  <div class="category" id="cat-conj">
+    <h2>6. Conjugation Reference <span class="en" style="font-size:0.7em;">Tableaux de conjugaison</span></h2>
+  </div>
+
+  <section class="topic" id="conj-tables" data-cat="Conjugation Reference" data-title="Common irregular verbs">
+    <h3><span class="fr-title">Verbes fréquents et irréguliers</span> <span class="level-tag">A2/B1</span></h3>
+    <div class="en-sub">Quick-reference forms for high-frequency irregular verbs</div>
+    <table class="gtable">
+      <tr><th>Verb</th><th>Present (je)</th><th>Passé composé (j')</th><th>Futur (je)</th><th>Subjonctif (que je)</th></tr>
+      <tr><td class="fr">voir</td><td class="fr">vois</td><td class="fr">ai vu</td><td class="fr">verrai</td><td class="fr">voie</td></tr>
+      <tr><td class="fr">dire</td><td class="fr">dis</td><td class="fr">ai dit</td><td class="fr">dirai</td><td class="fr">dise</td></tr>
+      <tr><td class="fr">mettre</td><td class="fr">mets</td><td class="fr">ai mis</td><td class="fr">mettrai</td><td class="fr">mette</td></tr>
+      <tr><td class="fr">ouvrir</td><td class="fr">ouvre</td><td class="fr">ai ouvert</td><td class="fr">ouvrirai</td><td class="fr">ouvre</td></tr>
+      <tr><td class="fr">conduire</td><td class="fr">conduis</td><td class="fr">ai conduit</td><td class="fr">conduirai</td><td class="fr">conduise</td></tr>
+      <tr><td class="fr">suivre</td><td class="fr">suis</td><td class="fr">ai suivi</td><td class="fr">suivrai</td><td class="fr">suive</td></tr>
+      <tr><td class="fr">peindre</td><td class="fr">peins</td><td class="fr">ai peint</td><td class="fr">peindrai</td><td class="fr">peigne</td></tr>
+      <tr><td class="fr">se souvenir</td><td class="fr">me souviens</td><td class="fr">me suis souvenu(e)</td><td class="fr">me souviendrai</td><td class="fr">me souvienne</td></tr>
+      <tr><td class="fr">s'installer</td><td class="fr">m'installe</td><td class="fr">me suis installé(e)</td><td class="fr">m'installerai</td><td class="fr">m'installe</td></tr>
+    </table>
+    <div class="note">
+      <span class="fr">Familles : ouvrir (découvrir, accueillir, offrir) ; conduire (produire, construire) ; peindre (éteindre) ; mettre (permettre, promettre).</span>
+      <span class="en">These verbs follow patterns shared by whole "families" of related verbs — learn one, get several for free.</span>
+    </div>
+    <div class="xref-box">
+      <span class="xref-label">See also:</span>
+      <a class="xref back-style" data-target="passe-compose">← Passé composé rules</a>
+      <a class="xref back-style" data-target="subjonctif">← Subjonctif formation</a>
+    </div>
+  </section>
+
+</main>
+
+<button id="topBtn">↑ Top</button>
+<button id="backBtn">◀ Back <span id="backLabel"></span></button>
+
+<div id="tocOverlay">
+  <div id="tocPanel">
+    <h2>Contents <button id="closeToc">✕</button></h2>
+    <div id="tocList"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var topics = Array.prototype.slice.call(document.querySelectorAll('.topic'));
+  var tocList = document.getElementById('tocList');
+  var cats = {};
+  topics.forEach(function(t){
+    var cat = t.getAttribute('data-cat');
+    if(!cats[cat]) cats[cat] = [];
+    cats[cat].push(t);
+  });
+  Object.keys(cats).forEach(function(cat){
+    var catEl = document.createElement('div');
+    catEl.className = 'toc-cat';
+    catEl.textContent = cat;
+    tocList.appendChild(catEl);
+    cats[cat].forEach(function(t){
+      var a = document.createElement('a');
+      a.href = '#' + t.id;
+      a.className = 'toc-link';
+      var frTitle = t.querySelector('h3 .fr-title').textContent;
+      a.textContent = frTitle + ' — ' + t.getAttribute('data-title');
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        goTo(t.id, true);
+        closeToc();
+      });
+      tocList.appendChild(a);
+    });
+  });
+
+  var menuBtn = document.getElementById('menuBtn');
+  var overlay = document.getElementById('tocOverlay');
+  var closeTocBtn = document.getElementById('closeToc');
+  menuBtn.addEventListener('click', function(){ overlay.classList.add('open'); });
+  closeTocBtn.addEventListener('click', closeToc);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeToc(); });
+  function closeToc(){ overlay.classList.remove('open'); }
+
+  // Navigation history stack for "back" jumps triggered by cross-refs / TOC
+  var navStack = [];
+  var crumbEl = document.getElementById('crumb');
+  var backBtn = document.getElementById('backBtn');
+  var backLabel = document.getElementById('backLabel');
+  var topBtn = document.getElementById('topBtn');
+
+  function currentTopicId(){
+    var best = null, bestTop = -Infinity;
+    topics.forEach(function(t){
+      var r = t.getBoundingClientRect();
+      if(r.top <= 120 && r.top > bestTop){ bestTop = r.top; best = t; }
+    });
+    return best ? best.id : null;
+  }
+
+  function updateCrumb(){
+    var id = currentTopicId();
+    if(!id){ crumbEl.textContent=''; return; }
+    var t = document.getElementById(id);
+    crumbEl.textContent = t.getAttribute('data-cat') + '  ›  ' + t.querySelector('h3 .fr-title').textContent;
+  }
+
+  function goTo(id, remember){
+    if(remember){
+      var fromId = currentTopicId();
+      if(fromId && fromId !== id){
+        navStack.push(fromId);
+      }
+    }
+    var el = document.getElementById(id);
+    if(el){
+      var y = el.getBoundingClientRect().top + window.pageYOffset - 78;
+      window.scrollTo({top:y, behavior:'smooth'});
+      el.classList.remove('highlight-flash');
+      void el.offsetWidth;
+      el.classList.add('highlight-flash');
+    }
+    refreshBackBtn();
+    history.replaceState(null, '', '#' + id);
+  }
+
+  function refreshBackBtn(){
+    if(navStack.length > 0){
+      var prevId = navStack[navStack.length-1];
+      var prevT = document.getElementById(prevId);
+      backLabel.textContent = prevT ? ('to ' + prevT.querySelector('h3 .fr-title').textContent) : '';
+      backBtn.classList.add('show');
+    } else {
+      backBtn.classList.remove('show');
+    }
+  }
+
+  backBtn.addEventListener('click', function(){
+    if(navStack.length === 0) return;
+    var id = navStack.pop();
+    var el = document.getElementById(id);
+    if(el){
+      var y = el.getBoundingClientRect().top + window.pageYOffset - 78;
+      window.scrollTo({top:y, behavior:'smooth'});
+      el.classList.remove('highlight-flash');
+      void el.offsetWidth;
+      el.classList.add('highlight-flash');
+      history.replaceState(null, '', '#' + id);
+    }
+    refreshBackBtn();
+  });
+
+  topBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  document.querySelectorAll('.xref').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = a.getAttribute('data-target');
+      goTo(target, true);
+    });
+  });
+
+  window.addEventListener('scroll', function(){
+    updateCrumb();
+    topBtn.classList.toggle('show', window.pageYOffset > 400);
+  }, {passive:true});
+  updateCrumb();
+
+  // Deep link on load
+  if(location.hash){
+    var id = location.hash.substring(1);
+    setTimeout(function(){ goTo(id, false); }, 50);
+  }
+
+  // Search
+  var searchBox = document.getElementById('searchBox');
+  var introEl = document.getElementById('intro');
+  var catEls = Array.prototype.slice.call(document.querySelectorAll('.category'));
+  searchBox.addEventListener('input', function(){
+    var q = searchBox.value.trim().toLowerCase();
+    if(q === ''){
+      topics.forEach(function(t){ t.classList.remove('hidden'); });
+      catEls.forEach(function(c){ c.classList.remove('hidden'); });
+      introEl.classList.remove('hidden');
+      return;
+    }
+    introEl.classList.add('hidden');
+    var visibleCats = {};
+    topics.forEach(function(t){
+      var text = t.textContent.toLowerCase();
+      var match = text.indexOf(q) !== -1;
+      t.classList.toggle('hidden', !match);
+      if(match) visibleCats[t.getAttribute('data-cat')] = true;
+    });
+    catEls.forEach(function(c){
+      var catName = c.querySelector('h2').textContent;
+      var found = false;
+      Object.keys(visibleCats).forEach(function(cat){
+        if(catName.indexOf(cat) !== -1) found = true;
+      });
+      // fallback: match by following siblings check already done via data-cat groups above
+      c.classList.toggle('hidden', false); // keep category headers visible for context
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
