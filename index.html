@@ -17,10 +17,18 @@
   --font-heading:"Source Serif 4",Georgia,"Times New Roman",serif;
   --font-body:"Source Serif 4",Georgia,"Times New Roman",serif;
   font-size:16px;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#17191b; --card:#1f2225; --surface:#26292d; --ink:#e9e7e4; --muted:#9b9793;
+  --line:rgba(233,231,228,0.14); --accent:#3ec4e8; --accent-dark:#7ddcf3; --accent-light:#0d3541;
+  --accent2:#ff5a9b; --accent2-dark:#ff8fbb; --accent2-light:#3a1424;
+  color-scheme:dark;
 }
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
-body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;padding-bottom:60px;}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);line-height:1.6;padding-bottom:60px;
+  transition:background .15s ease,color .15s ease;}
 h1,h2,h3{font-family:var(--font-heading);font-weight:600;margin:0;}
 .fr{font-style:normal;}
 .en{color:var(--muted);font-size:0.92em;}
@@ -39,6 +47,9 @@ nav.topnav a:hover{color:var(--accent-dark);}
 #navSearch:focus{outline:2px solid var(--accent);outline-offset:0;}
 #menuToggle{display:none;background:transparent;border:1px solid var(--line);border-radius:var(--radius);
   width:36px;height:36px;font-size:1rem;cursor:pointer;}
+#themeToggle{background:transparent;border:1px solid var(--line);border-radius:var(--radius);color:var(--ink);
+  width:36px;height:36px;font-size:0.95rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
+#themeToggle:hover{border-color:var(--accent);}
 
 main{max-width:var(--maxw);margin:0 auto;padding:24px 18px 40px;}
 .reading{max-width:var(--maxw-read);margin:0 auto;}
@@ -76,7 +87,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:24px 18px 40px;}
 
 /* lesson rows */
 .lesson-row{display:flex;align-items:center;gap:14px;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer;}
-.lesson-row:hover{background:rgba(0,136,176,0.05);}
+.lesson-row:hover{background:var(--accent-light);}
 .lesson-row .row-title{font-family:var(--font-heading);font-weight:600;font-size:1rem;}
 .lesson-row .row-desc{font-size:0.86rem;color:var(--muted);margin-top:2px;}
 .lesson-row .row-main{flex:1;min-width:0;}
@@ -169,6 +180,7 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
   <a data-nav="home" class="active">Home</a>
   <a data-nav="browse">Browse</a>
   <input type="text" id="navSearch" placeholder="Search a topic&hellip;">
+  <button id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
   <button id="menuToggle" aria-label="Search">&#128269;</button>
 </nav>
 <div class="mobile-search" id="mobileSearchWrap">
@@ -204,6 +216,25 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
   }
   var bookmarks = loadJSON('fg_bookmarks', []);
   var recent = loadJSON('fg_recent', []);
+
+  function applyTheme(t){
+    document.documentElement.setAttribute('data-theme', t);
+    var btn = document.getElementById('themeToggle');
+    if(btn) btn.textContent = t === 'dark' ? '☀' : '☽';
+  }
+  function initTheme(){
+    var saved = null;
+    try{ saved = localStorage.getItem('fg_theme'); }catch(e){}
+    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    applyTheme(theme);
+  }
+  function toggleTheme(){
+    var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try{ localStorage.setItem('fg_theme', next); }catch(e){}
+  }
+  initTheme();
 
   function isBookmarked(id){ return bookmarks.indexOf(id) !== -1; }
   function toggleBookmark(id){
@@ -457,6 +488,8 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
     mobileSearchWrap.classList.toggle('open');
     if(mobileSearchWrap.classList.contains('open')) mobileSearch.focus();
   });
+  var themeToggle = document.getElementById('themeToggle');
+  if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
   mobileSearch.addEventListener('keydown', function(e){
     if(e.key === 'Enter') runSearch(mobileSearch.value);
   });
