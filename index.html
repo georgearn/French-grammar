@@ -45,8 +45,6 @@ nav.topnav a:hover{color:var(--accent-dark);}
 #navSearch{width:220px;max-width:40vw;padding:7px 10px;border-radius:var(--radius);border:1px solid var(--line);
   background:var(--surface);font-family:var(--font-body);font-size:0.88rem;color:var(--ink);}
 #navSearch:focus{outline:2px solid var(--accent);outline-offset:0;}
-#menuToggle{display:none;background:transparent;border:1px solid var(--line);border-radius:var(--radius);
-  width:36px;height:36px;font-size:1rem;cursor:pointer;}
 #themeToggle{background:transparent;border:1px solid var(--line);border-radius:var(--radius);color:var(--ink);
   width:36px;height:36px;font-size:0.95rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;}
 #themeToggle:hover{border-color:var(--accent);}
@@ -160,15 +158,10 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
 /* mobile adjustments */
 @media(max-width:639px){
   nav.topnav{gap:10px;}
-  #navSearch{display:none;}
-  #menuToggle{display:inline-flex;align-items:center;justify-content:center;}
+  #navSearch{order:3;flex:1 1 100%;width:100%;max-width:none;}
   .hero h1{font-size:1.7rem;}
   .stat-strip{gap:0 16px;}
   main{padding:18px 14px 40px;}
-}
-.mobile-search{display:none;padding:0 0 16px;}
-@media(max-width:639px){
-  .mobile-search.open{display:block;}
 }
 </style>
 
@@ -181,11 +174,7 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
   <a data-nav="browse">Browse</a>
   <input type="text" id="navSearch" placeholder="Search a topic&hellip;">
   <button id="themeToggle" aria-label="Toggle dark mode">&#9789;</button>
-  <button id="menuToggle" aria-label="Search">&#128269;</button>
 </nav>
-<div class="mobile-search" id="mobileSearchWrap">
-  <div style="padding:12px 14px 0;"><input type="text" id="mobileSearch" class="input" placeholder="Search a topic&hellip;"></div>
-</div>
 
 <main id="app"></main>
 
@@ -252,9 +241,6 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
   var app = document.getElementById('app');
   var navLinks = document.querySelectorAll('nav.topnav a[data-nav]');
   var navSearch = document.getElementById('navSearch');
-  var menuToggle = document.getElementById('menuToggle');
-  var mobileSearchWrap = document.getElementById('mobileSearchWrap');
-  var mobileSearch = document.getElementById('mobileSearch');
 
   function esc(s){
     return String(s).replace(/[&<>"']/g, function(c){
@@ -450,7 +436,6 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
     var parts = hash.split('/').filter(Boolean);
     var screen = parts[0] || 'home';
     var id = parts[1];
-    mobileSearchWrap.classList.remove('open');
     if(screen === 'home') renderHome();
     else if(screen === 'browse') renderBrowse(query);
     else if(screen === 'category') renderCategory(id);
@@ -484,15 +469,8 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
   navSearch.addEventListener('keydown', function(e){
     if(e.key === 'Enter') runSearch(navSearch.value);
   });
-  menuToggle.addEventListener('click', function(){
-    mobileSearchWrap.classList.toggle('open');
-    if(mobileSearchWrap.classList.contains('open')) mobileSearch.focus();
-  });
   var themeToggle = document.getElementById('themeToggle');
   if(themeToggle) themeToggle.addEventListener('click', toggleTheme);
-  mobileSearch.addEventListener('keydown', function(e){
-    if(e.key === 'Enter') runSearch(mobileSearch.value);
-  });
 
   window.addEventListener('hashchange', render);
   render();
