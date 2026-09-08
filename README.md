@@ -16,13 +16,9 @@ If any content here is inaccurate or outdated, consult the primary sources below
 
 This guide draws on and should be cross-checked against standard, widely recognized French grammar references, including:
 
-- *Le Bon Usage* (Grevisse & Goosse) — the authoritative descriptive grammar of French.
 - *Bescherelle* — conjugation and grammar reference series.
 - *Grammaire progressive du français* (CLE International).
-- **Le Point du FLE** (lepointdufle.net) — curated French-as-a-foreign-language resources.
-- **TV5Monde – Langue Française** (langue-francaise.tv5monde.com) — grammar and exercises.
-- **Common European Framework of Reference for Languages (CEFR)**, Council of Europe — for level descriptors (A2–C2).
-- **Larousse** and **Le Dictionnaire de l'Académie française** — for definitions and usage.
+- **Edito** — grammar and exercises.
 
 Learners are encouraged to consult these sources directly for authoritative rules, examples, and exceptions.
 
