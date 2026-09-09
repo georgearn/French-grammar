@@ -1,10 +1,10 @@
-# French Grammar Guide (A2–C2)
+# French Grammar Guide (A1–C2)
 
-A single-page, self-contained HTML reference for French grammar, organized by CEFR level (A2 through C2).
+A single-page, self-contained HTML reference for French grammar, organized by CEFR level (A1 through C2).
 
 ## ⚠️ Educational Purpose Only
 
-This project is a **learning resource created for personal study and educational purposes only**. It is:
+This project is a personal study project, built for my own French learning journey using the resources I have at hand. It is a **learning resource created for personal study and educational purposes only**. It is:
 
 - **Not an official or authoritative reference** — always verify rules against established grammar authorities.
 - **Not affiliated with, endorsed by, or sponsored by** any publisher, academic institution, or language-certification body (e.g., CEFR/CIEP, France Éducation international).
