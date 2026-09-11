@@ -1,10 +1,10 @@
-# French Grammar Guide (A2–C2)
+# French Grammar Guide (A1–C2)
 
-A single-page, self-contained HTML reference for French grammar, organized by CEFR level (A2 through C2).
+A single-page, self-contained HTML reference for French grammar, organized by CEFR level (A1 through C2).
 
 ## ⚠️ Educational Purpose Only
 
-This project is a **learning resource created for personal study and educational purposes only**. It is:
+This project is a personal study project, built for my own French learning journey using the resources I have at hand. It is a **learning resource created for personal study and educational purposes only**. It is:
 
 - **Not an official or authoritative reference** — always verify rules against established grammar authorities.
 - **Not affiliated with, endorsed by, or sponsored by** any publisher, academic institution, or language-certification body (e.g., CEFR/CIEP, France Éducation international).
@@ -16,13 +16,9 @@ If any content here is inaccurate or outdated, consult the primary sources below
 
 This guide draws on and should be cross-checked against standard, widely recognized French grammar references, including:
 
-- *Le Bon Usage* (Grevisse & Goosse) — the authoritative descriptive grammar of French.
 - *Bescherelle* — conjugation and grammar reference series.
 - *Grammaire progressive du français* (CLE International).
-- **Le Point du FLE** (lepointdufle.net) — curated French-as-a-foreign-language resources.
-- **TV5Monde – Langue Française** (langue-francaise.tv5monde.com) — grammar and exercises.
-- **Common European Framework of Reference for Languages (CEFR)**, Council of Europe — for level descriptors (A2–C2).
-- **Larousse** and **Le Dictionnaire de l'Académie française** — for definitions and usage.
+- **Edito** — grammar and exercises.
 
 Learners are encouraged to consult these sources directly for authoritative rules, examples, and exceptions.
 
