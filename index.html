@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#f3f2f2">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <title>French Grammar Guide — A2 to C2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,6 +251,8 @@ details.examples-toggle .examples{margin:0;padding:12px 14px;background:var(--ac
     document.documentElement.setAttribute('data-theme', t);
     var btn = document.getElementById('themeToggle');
     if(btn) btn.textContent = t === 'dark' ? '☀' : '☽';
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if(meta) meta.setAttribute('content', t === 'dark' ? '#17191b' : '#f3f2f2');
   }
   function initTheme(){
     var saved = null;
